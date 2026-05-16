@@ -20,12 +20,19 @@ function App() {
     return (
         <div>
             <h1>Witaj w systemie do zapisów na zajęcia</h1>
-            <h2>Zaloguj sie e-mailem {email}.</h2>
-            <h3>Twój e-mail dużymi literami to {email.toUpperCase()}</h3>
-            <input type="text" value={email} onChange={handleChange}/>
-            {(email.length < 10 || email.length >= 25) && <div>{message}</div>}            <button type="button" onClick={() => alert(email)}>
-                Wyświetl mój e-mail w alercie
-            </button>
+            <h2>
+                Zaloguj się e-mailem
+                <input
+                    type="text"
+                    value={email}
+                    onChange={handleChange}
+                />
+                <button type="button" onClick={() => alert(email)}>
+                    Wchodzę
+                </button>
+            </h2>
+            {(email.length < 10 || email.length >= 25) && <div>{message}</div>}
+
 
         </div>
 
