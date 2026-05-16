@@ -4,6 +4,7 @@ import { useState } from "react";
 import "milligram";
 import LoginForm from "./LoginForm";
 import UserPanel from "./UserPanel";
+import MeetingsPage from "./meetings/MeetingsPage";
 
 function App() {
 
@@ -39,8 +40,12 @@ function App() {
 
             {
                 isLoggedIn
-                    ? <UserPanel username={email} onLogout={logout} />
+                    ? <>
+                        <UserPanel username={email} onLogout={logout} />
+                    <MeetingsPage />
+                    </>
                     : <LoginForm onLogin={login} />
+
             }
 
         </div>
