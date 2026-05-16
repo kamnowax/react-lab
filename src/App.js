@@ -1,18 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
-    let email = 'kamnowax@gmail.com';
+    const [email, setEmail] = useState('kamnowax@gmail.com');
 
     function handleChange(event) {
-        console.log(event.target.value);
+        setEmail(event.target.value);
     }
 
     return (
         <div>
             <h1>System do zapisów na zajęcia</h1>
             <h2>Twój e-mail to {email}.</h2>
-            <input type="text" onChange={handleChange}/>
+            <input type="text" value={email} onChange={handleChange}/>
         </div>
     );
 }
