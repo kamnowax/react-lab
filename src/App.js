@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from "react";
 import "milligram";
 import LoginForm from "./LoginForm";
+import UserPanel from "./UserPanel";
 
 function App() {
 
@@ -12,8 +13,13 @@ function App() {
     function handleChange(event) {
         setEmail(event.target.value);
     }
-    function login() {
+    function login(userEmail) {
+        setEmail(userEmail);
         setIsLoggedIn(true);
+    }
+
+    function logout() {
+        setIsLoggedIn(false);
     }
 
     let message;
@@ -29,23 +35,13 @@ function App() {
     return (
         <div className="container">
 
-            <h1>Witaj w systemie do zapisów na zajęcia</h1>
+            <h1>System do zapisów na zajęcia</h1>
 
-            {!isLoggedIn && <LoginForm onLogin={login}/>}
-
-            {isLoggedIn && (
-                <div>
-
-                    <h1>Witaj {email}</h1>
-
-                    <a href="#"
-                       onClick={() => setIsLoggedIn(false)}
-                    >
-                        Wyloguj
-                    </a>
-
-                </div>
-            )}
+            {
+                isLoggedIn
+                    ? <UserPanel username={email} onLogout={logout} />
+                    : <LoginForm onLogin={login} />
+            }
 
         </div>
     );
